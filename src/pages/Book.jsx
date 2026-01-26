@@ -1,8 +1,11 @@
 import React from 'react'
+import Main from '../components/section/Main'
 
 const Book = () => {
   return (
-    <div>Book</div>
+    <Main>
+      Book
+    </Main>
   )
 }
 
