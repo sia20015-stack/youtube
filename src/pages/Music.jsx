@@ -1,12 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Main from '../components/section/Main'
 import { musicText } from '../data/music'
 import { Link } from 'react-router-dom'
 
 const Music = () => {
+
+  const[loading, setLoding] = useState(true);
+          
+        useEffect(()=>{
+        setTimeout(()=>{
+        setLoding(false)
+        },300);
+        },[])
+            
+  const videoClass = loading ? 'isLoading' : 'isLoaded'
+
   return (
     <Main>
-      <section id='musicPage'>
+      <section id='musicPage' className={videoClass}>
         <h2>🎧추천 음악을 소개합니다.</h2>
         <div className='music__inner'>
           {musicText.map((music, key)=>(

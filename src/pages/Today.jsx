@@ -1,12 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Main from '../components/section/Main'
 import { todayText } from '../data/today'
 import { Link } from 'react-router-dom'
 
 const Today = () => {
+
+  const[loading, setLoding] = useState(true);
+            
+              useEffect(()=>{
+              setTimeout(()=>{
+              setLoding(false)
+              },300);
+              },[])
+              
+  const videoClass = loading ? 'isLoading' : 'isLoaded'
+
   return (
     <Main>
-      <section id='todayPage'>
+      <section id={'todayPage'} className={videoClass}>
         <h2>😎추천 영상</h2>
         {todayText.map((today, key)=>(
           <div className='today__inner'>
@@ -25,7 +36,7 @@ const Today = () => {
                   <p className='desc'>{today.desc}</p>
                   <div className='info'>
                     <span className='author'>
-                        <Link to={'/channel/${todayText[0].channelId}'}>
+                        <Link to={`/channel/${todayText[0].channelId}`}>
                             {today.author}
                         </Link>
                       </span>
